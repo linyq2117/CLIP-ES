@@ -125,12 +125,11 @@ def crf(n_jobs, is_coco=False):
 
         return label.astype(np.uint8), gt_label.astype(np.uint8)
 
+    # CRF in multi-process
+    results = joblib.Parallel(n_jobs=n_jobs, verbose=10, pre_dispatch="all")(
+           [joblib.delayed(process)(i) for i in range(len(eval_list))]
+    )
     if args.eval_only:
-        # CRF in multi-process
-        results = joblib.Parallel(n_jobs=n_jobs, verbose=10, pre_dispatch="all")(
-            [joblib.delayed(process)(i) for i in range(len(eval_list))]
-        )
-
         preds, gts = zip(*results)
 
         # Pixel Accuracy, Mean Accuracy, Class IoU, Mean IoU, Freq Weighted IoU
