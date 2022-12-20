@@ -157,7 +157,7 @@ if __name__ == "__main__":
         eval_list = [x[0] for x in file_list]#[:2000]
     print('{} images to eval'.format(len(eval_list)))
 
-    if not os.path.exists(args.pseudo_mask_save_path):
+    if not args.eval_only and not os.path.exists(args.pseudo_mask_save_path):
         os.makedirs(args.pseudo_mask_save_path)
 
     mean_bgr = (104.008, 116.669, 122.675)

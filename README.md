@@ -1,5 +1,6 @@
 # CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation
 
+![images](CLIP-ES.png)
 ## Reqirements
 
 ```
@@ -64,7 +65,8 @@ python eval_cam.py --cam_out_dir ./output/voc12/cams --cam_type attn_highres --g
 ## for COCO14
 python eval_cam.py --cam_out_dir ./output/coco14/cams --cam_type attn_highres --gt_root /your_home_dir/datasets/COCO2014/SegmentationClass --split_file ./coco14/train.txt
 
-# use CRF process to generate pseudo masks (set pixels with low confidence to 255)
+# use CRF process to generate pseudo masks 
+(realize confidence-guided loss by setting pixels with low confidence to 255)
 ## for VOC12 
 python eval_cam_with_crf.py --cam_out_dir ./output/voc12/cams --gt_root /your_home_dir/datasets/VOC2012/SegmentationClassAug --image_root /your_home_dir/datasets/VOC2012/JPEGImages --split_file ./voc12/train_aug.txt --pseudo_mask_save_path ./output/voc12/pseudo_masks
 ## for COCO14
@@ -72,14 +74,28 @@ python eval_cam_with_crf.py --cam_out_dir ./output/coco14/cams --gt_root /your_h
 
 # eval CRF processed pseudo masks
 ## for VOC12 
-python eval_cam_with_crf.py --cam_out_dir ./output/voc12/cams --gt_root /your_home_dir/datasets/VOC2012/SegmentationClassAug --image_root /your_home_dir/datasets/VOC2012/JPEGImages --split_file ./voc12/train_aug.txt --pseudo_mask_save_path ./output/voc12/pseudo_masks --eval_only
+python eval_cam_with_crf.py --cam_out_dir ./output/voc12/cams --gt_root /your_home_dir/datasets/VOC2012/SegmentationClassAug --image_root /your_home_dir/datasets/VOC2012/JPEGImages --split_file ./voc12/train_aug.txt --eval_only
 ## for COCO14
-python eval_cam_with_crf.py --cam_out_dir ./output/coco14/cams --gt_root /your_home_dir/datasets/COCO2014/SegmentationClass --image_root /your_home_dir/datasets/COCO2014/JPEGImages/train2014 --split_file ./coco14/train.txt --pseudo_mask_save_path ./output/coco2014/pseudo_masks --eval_only
+python eval_cam_with_crf.py --cam_out_dir ./output/coco14/cams --gt_root /your_home_dir/datasets/COCO2014/SegmentationClass --image_root /your_home_dir/datasets/COCO2014/JPEGImages/train2014 --split_file ./coco14/train.txt --eval_only
 
 ```
-
+The generated pseudo masks of VOC12 and COCO14 can be found at [Google Drive](https://drive.google.com/drive/folders/1i9fp2c87s5ungxFpLFgUm_zUACpLuKtJ?usp=sharing).
 ### Step 3. Train Segmentation Model
 To train DeepLab-v2, we refer to [deeplab-pytorch](https://github.com/kazuto1011/deeplab-pytorch). The ImageNet pre-trained model can be found in [AdvCAM](https://github.com/jbeomlee93/AdvCAM).
 
+## Results
+### The quality of generated pseudo masks on PASCAL VOC2012 train set.
+| Method | CAMs | +CRF |
+| --- | --- | --- | 
+| CLIP-ES | 70.8 | 75.0 |
+### Segmentation results on PASCAL VOC2012 val and test sets.
+| Method | Network | Pretrained | val | test |
+| --- | --- | --- | --- | --- |
+| CLIP-ES | DeepLabV2 | ImageNet | 71.1 | 71.4 |
+| CLIP-ES | DeepLabV2 | COCO | 73.8 | 73.9 |
+### Segmentation results on MS COCO2014 val set.
+| Method | Network | Pretrained | val | 
+| --- | --- | --- | --- | 
+| CLIP-ES | DeepLabV2 | ImageNet | 45.4 | 
 ## Acknowledgement
 We borrowed the code from [CLIP](https://github.com/openai/CLIP) and [pytorch_grad_cam](https://github.com/jacobgil/pytorch-grad-cam/tree/61e9babae8600351b02b6e90864e4807f44f2d4a). Thanks for their wonderful works.
