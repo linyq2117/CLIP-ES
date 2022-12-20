@@ -114,29 +114,28 @@ def crf(n_jobs, is_coco=False):
 
         image = image.astype(np.uint8).transpose(1, 2, 0)
         prob = postprocessor(image, prob)
-        '''
-        confidence = np.max(prob, axis=0)
-        confidence = confidence*255
-        confidence = np.rint(confidence)
-        cv2.imwrite(os.path.join(args.pseudo_mask_save_path.replace('pseudo_masks','confidence'),image_id + '.png'), confidence.astype(np.uint8))
-        '''
+
         label = np.argmax(prob, axis=0)
         keys = np.pad(cam_dict['keys'] + 1, (1, 0), mode='constant')
         label = keys[label]
-        cv2.imwrite(os.path.join(args.pseudo_mask_save_path, image_id + '.png'), label.astype(np.uint8))
+        if not args.eval_only:
+            confidence = np.max(prob, axis=0)
+            label[confidence < 0.95] = 255
+            cv2.imwrite(os.path.join(args.pseudo_mask_save_path, image_id + '.png'), label.astype(np.uint8))
 
         return label.astype(np.uint8), gt_label.astype(np.uint8)
 
-    # CRF in multi-process
-    results = joblib.Parallel(n_jobs=n_jobs, verbose=10, pre_dispatch="all")(
-        [joblib.delayed(process)(i) for i in range(len(eval_list))]
-    )
+    if args.eval_only:
+        # CRF in multi-process
+        results = joblib.Parallel(n_jobs=n_jobs, verbose=10, pre_dispatch="all")(
+            [joblib.delayed(process)(i) for i in range(len(eval_list))]
+        )
 
-    preds, gts = zip(*results)
+        preds, gts = zip(*results)
 
-    # Pixel Accuracy, Mean Accuracy, Class IoU, Mean IoU, Freq Weighted IoU
-    score = scores(gts, preds, n_class=21 if not is_coco else 81)
-    print(score)
+        # Pixel Accuracy, Mean Accuracy, Class IoU, Mean IoU, Freq Weighted IoU
+        score = scores(gts, preds, n_class=21 if not is_coco else 81)
+        print(score)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -147,6 +146,7 @@ if __name__ == "__main__":
     parser.add_argument("--cam_eval_thres", default=2, type=float)
     parser.add_argument("--gt_root", default="/home/xxx/datasets/VOC2012/SegmentationClassAug", type=str)
     parser.add_argument("--image_root", default="/home/xxx/datasets/VOC2012/JPEGImages", type=str)
+    parser.add_argument("--eval_only", action="store_true")
     args = parser.parse_args()
 
     is_coco = 'coco' in args.cam_out_dir
@@ -157,6 +157,9 @@ if __name__ == "__main__":
         file_list = [id_.rstrip().split(" ") for id_ in file_list]
         eval_list = [x[0] for x in file_list]#[:2000]
     print('{} images to eval'.format(len(eval_list)))
+
+    if not os.path.exists(args.pseudo_mask_save_path):
+        os.makedirs(args.pseudo_mask_save_path)
 
     mean_bgr = (104.008, 116.669, 122.675)
     n_jobs =multiprocessing.cpu_count()
