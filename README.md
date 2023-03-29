@@ -61,7 +61,7 @@ CUDA_VISIBLE_DEVICES=0 python generate_cams_coco14.py --img_root /your_home_dir/
 ```
 # (optional) evaluate generated CAMs
 ## for VOC12
-python eval_cam.py --cam_out_dir ./output/voc12/cams --cam_type attn_highres --gt_root /your_home_dir/datasets/VOC2012/SegmentationClassAug --split_file ./voc12/train_aug.txt
+python eval_cam.py --cam_out_dir ./output/voc12/cams --cam_type attn_highres --gt_root /your_home_dir/datasets/VOC2012/SegmentationClassAug --split_file ./voc12/train.txt
 ## for COCO14
 python eval_cam.py --cam_out_dir ./output/coco14/cams --cam_type attn_highres --gt_root /your_home_dir/datasets/COCO2014/SegmentationClass --split_file ./coco14/train.txt
 
