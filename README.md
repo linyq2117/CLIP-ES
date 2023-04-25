@@ -1,4 +1,4 @@
-# CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation
+# CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation (CVPR 2023)
 
 ![images](CLIP-ES.png)
 ## Reqirements
@@ -99,3 +99,13 @@ To train DeepLab-v2, we refer to [deeplab-pytorch](https://github.com/kazuto1011
 | CLIP-ES | DeepLabV2 | ImageNet | 45.4 | 
 ## Acknowledgement
 We borrowed the code from [CLIP](https://github.com/openai/CLIP) and [pytorch_grad_cam](https://github.com/jacobgil/pytorch-grad-cam/tree/61e9babae8600351b02b6e90864e4807f44f2d4a). Thanks for their wonderful works.
+
+## Citation
+If you find this project helpful for your research, please consider citing the following BibTeX entry.
+```
+article{lin2022clip,
+  title={CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation},
+  author={Lin, Yuqi and Chen, Minghao and Wang, Wenxiao and Wu, Boxi and Li, Ke and Lin, Binbin and Liu, Haifeng and He, Xiaofei},
+  journal={arXiv preprint arXiv:2212.09506},
+  year={2022}
+```
