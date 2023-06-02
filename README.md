@@ -1,4 +1,8 @@
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip-is-also-an-efficient-segmenter-a-text/weakly-supervised-semantic-segmentation-on)](https://paperswithcode.com/sota/weakly-supervised-semantic-segmentation-on?p=clip-is-also-an-efficient-segmenter-a-text)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip-is-also-an-efficient-segmenter-a-text/weakly-supervised-semantic-segmentation-on-1)](https://paperswithcode.com/sota/weakly-supervised-semantic-segmentation-on-1?p=clip-is-also-an-efficient-segmenter-a-text)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip-is-also-an-efficient-segmenter-a-text/weakly-supervised-semantic-segmentation-on-4)](https://paperswithcode.com/sota/weakly-supervised-semantic-segmentation-on-4?p=clip-is-also-an-efficient-segmenter-a-text)
 # CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation (CVPR 2023)
+[[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Lin_CLIP_Is_Also_an_Efficient_Segmenter_A_Text-Driven_Approach_for_CVPR_2023_paper.html)
 
 ![images](CLIP-ES.png)
 ## Reqirements
@@ -103,9 +107,12 @@ We borrowed the code from [CLIP](https://github.com/openai/CLIP) and [pytorch_gr
 ## Citation
 If you find this project helpful for your research, please consider citing the following BibTeX entry.
 ```
-article{lin2022clip,
-  title={CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation},
-  author={Lin, Yuqi and Chen, Minghao and Wang, Wenxiao and Wu, Boxi and Li, Ke and Lin, Binbin and Liu, Haifeng and He, Xiaofei},
-  journal={arXiv preprint arXiv:2212.09506},
-  year={2022}
+@InProceedings{Lin_2023_CVPR,
+    author    = {Lin, Yuqi and Chen, Minghao and Wang, Wenxiao and Wu, Boxi and Li, Ke and Lin, Binbin and Liu, Haifeng and He, Xiaofei},
+    title     = {CLIP Is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {15305-15314}
+}
 ```
