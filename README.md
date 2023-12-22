@@ -2,9 +2,16 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip-is-also-an-efficient-segmenter-a-text/weakly-supervised-semantic-segmentation-on-1)](https://paperswithcode.com/sota/weakly-supervised-semantic-segmentation-on-1?p=clip-is-also-an-efficient-segmenter-a-text)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/clip-is-also-an-efficient-segmenter-a-text/weakly-supervised-semantic-segmentation-on-4)](https://paperswithcode.com/sota/weakly-supervised-semantic-segmentation-on-4?p=clip-is-also-an-efficient-segmenter-a-text)
 # CLIP is Also an Efficient Segmenter: A Text-Driven Approach for Weakly Supervised Semantic Segmentation (CVPR 2023)
-[[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Lin_CLIP_Is_Also_an_Efficient_Segmenter_A_Text-Driven_Approach_for_CVPR_2023_paper.html)
+:closed_book: [[arxiv]](https://arxiv.org/abs/2212.09506) [[CVPR]](https://openaccess.thecvf.com/content/CVPR2023/html/Lin_CLIP_Is_Also_an_Efficient_Segmenter_A_Text-Driven_Approach_for_CVPR_2023_paper.html)
 
 ![images](CLIP-ES.png)
+
+## :tada: :tada: :tada: News
+
+- **`2023/12/09` Our new paper [TagCLIP: A Local-to-Global Framework to Enhance Open-Vocabulary Multi-Label Classification of CLIP Without Training]() is accepted by AAAI 2024. It can generate image-level labels based on frozen CLIP and can realize annotation-free semantic segmentation without any training when combining with CLIP-ES.**
+
+- **`2023/2/28` Our paper is accepted by CVPR 2023.**
+
 ## Reqirements
 
 ```
@@ -31,6 +38,7 @@ The structure of `/your_home_dir/datasets/VOC2012`should be organized as follows
 ---VOC2012/
        --Annotations
        --ImageSets
+       --JPEGImages
        --SegmentationClass
        --SegmentationClassAug
 ```
@@ -42,7 +50,7 @@ The structure of `/your_home_dir/datasets/COCO2014`are suggested to be organized
 ```
 ---COCO2014/
        --Annotations
-       --ImageSets
+       --JPEGImages
            -train2014
            -val2014
        --SegmentationClass
