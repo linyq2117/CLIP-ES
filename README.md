@@ -31,7 +31,7 @@ python setup.py install
 
 ## Preparing Datasets
 ### PASCAL VOC2012
-Download images in PASCAL VOC2012 dataset at [here](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/) and the train_aug groundtruth at [here](http://home.bharathh.info/pubs/codes/SBD/download.html).
+Download images in PASCAL VOC2012 dataset at [here](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/) and the train_aug groundtruth at [here](https://www.dropbox.com/s/oeu149j8qtbs1x0/SegmentationClassAug.zip?dl=0).
 The structure of `/your_home_dir/datasets/VOC2012`should be organized as follows:
 
 ```
