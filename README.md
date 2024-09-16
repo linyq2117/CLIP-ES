@@ -8,7 +8,7 @@
 
 ## :tada: :tada: :tada: News
 
-- **`2023/12/09` Our new paper [TagCLIP: A Local-to-Global Framework to Enhance Open-Vocabulary Multi-Label Classification of CLIP Without Training]() is accepted by AAAI 2024. It can generate image-level labels based on frozen CLIP and can realize annotation-free semantic segmentation without any training when combining with CLIP-ES.**
+- **`2023/12/09` Our new paper [TagCLIP: A Local-to-Global Framework to Enhance Open-Vocabulary Multi-Label Classification of CLIP Without Training](https://github.com/linyq2117/TagCLIP) is accepted by AAAI 2024. It can generate image-level labels based on frozen CLIP and can realize annotation-free semantic segmentation without any training when combining with CLIP-ES.**
 
 - **`2023/2/28` Our paper is accepted by CVPR 2023.**
 
